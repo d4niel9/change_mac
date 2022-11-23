@@ -4,9 +4,9 @@
 ## Install  :gear:
 
 ```console
-
 1. Install package tool 
     $ sudo apt-get install macchanger
+    $ sudo apt install net-tools
 
 2. Clone this repo
     $ git clone https://github.com/d4niel9/change_mac.git
