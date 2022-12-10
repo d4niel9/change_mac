@@ -37,24 +37,29 @@ def create_mask_mac():
 
 
 def run():
-    new_mac = create_mask_mac()
     network = input("Network interface-> ") # chosee interface network
     try:
         while True:
+            new_mac = create_mask_mac()
+            
             # down interface network
             command_down_interface = "ifconfig {} down".format(network)
+            print(command_down_interface)
             os.popen(command_down_interface)
 
             # command for change mac
             command_change_mac = "macchanger --mac={} {}".format(new_mac, network)
             os.popen(command_change_mac)
+            print(command_change_mac)
 
             # up interface network
             command_up_interface = "ifconfig {} up".format(network)
+            print(command_up_interface)
             os.popen(command_up_interface)
+            time.sleep(60) # Define renew MAC time in seconds
 
-    except Exception as error:
-        print(str(error))
+    except KeyboardInterrupt as error:
+        print("stop")
         
 
 if __name__ == '__main__':
