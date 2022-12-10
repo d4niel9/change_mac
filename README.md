@@ -15,7 +15,8 @@
     $ cd change_mac
 
 4. Run the script
-    $ python3 main.py
+    $ sudo 
+    python3 main.py
 ```
 
 
