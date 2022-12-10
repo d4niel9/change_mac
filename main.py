@@ -38,24 +38,20 @@ def create_mask_mac():
 
 def run():
     new_mac = create_mask_mac()
+    network = input("Network interface-> ") # chosee interface network
     try:
-        # chosee interface network
-        network = input("Network interface-> ")
+        while True:
+            # down interface network
+            command_down_interface = "ifconfig {} down".format(network)
+            os.popen(command_down_interface)
 
-        # down interface network
-        command_down_interface = "ifconfig {} down".format(network)
-        print(command_down_interface)
-        os.popen(command_down_interface).read()
+            # command for change mac
+            command_change_mac = "macchanger --mac={} {}".format(new_mac, network)
+            os.popen(command_change_mac)
 
-        # command for change mac
-        command_change_mac = "macchanger --mac={} {}".format(new_mac, network)
-        os.popen(command_change_mac).read()
-        print(command_change_mac)
-
-        # up interface network
-        command_up_interface = "ifconfig {} up".format(network)
-        print(command_up_interface)
-        os.popen(command_up_interface).read()
+            # up interface network
+            command_up_interface = "ifconfig {} up".format(network)
+            os.popen(command_up_interface)
 
     except Exception as error:
         print(str(error))
